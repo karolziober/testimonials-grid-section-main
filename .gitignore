@@ -2,6 +2,7 @@
 *.sketch
 *.fig
 *.xd
+*.md
 
 # Dependencies
 /node_modules
@@ -10,6 +11,7 @@
 yarn.debug.log*
 yarn.error.log*
 npm-debug.log*
+.prettierrc
 
 # Environment and secrets
 .env
