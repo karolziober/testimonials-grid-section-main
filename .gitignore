@@ -3,6 +3,7 @@
 *.fig
 *.xd
 *.md
+*.png
 
 # Dependencies
 /node_modules

@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600&display=swap');
+
+/* ==================== */
+/* VARIABLES            */
+/* ==================== */
 :root {
   /* Primary */
   --purple-50: hsl(260, 100%, 95%);
@@ -13,13 +17,26 @@
   --grey-500: hsl(217, 19%, 35%);
   --dark-blue: hsl(219, 29%, 14%);
   --black: hsl(0, 0%, 7%);
+
+  /* Spacing */
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+
+  /* Other */
+  --radius-card: 0.5rem;
+  --border-width: 0.125rem;
 }
 
+/* ==================== */
+/* BASE / RESET         */
+/* ==================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   display: flex;
   flex-direction: column;
@@ -29,25 +46,37 @@ body {
   font-family: Barlow Semi Condensed;
   background-color: rgb(246, 245, 246);
 }
+
+/* ==================== */
+/* LAYOUT               */
+/* ==================== */
 main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 2rem;
+  gap: var(--spacing-md);
   max-width: 70rem;
+  margin: var(--spacing-lg);
 }
-h1 {
+
+/* ==================== */
+/* TYPOGRAPHY           */
+/* ==================== */
+h2 {
   font-weight: 600;
   font-size: 1.25rem;
-  margin-block-end: 1rem;
+  margin-block-end: var(--spacing-sm);
   line-height: 1.2;
   letter-spacing: 0;
 }
 
+.attribution {
+  margin-block-end: var(--spacing-md);
+}
+
 .title {
   font-size: 0.6875rem;
-  margin-block-end: 1rem;
-  /* color: var(--grey-100); */
+  margin-block-end: var(--spacing-sm);
 }
 .description,
 .name {
@@ -56,23 +85,39 @@ h1 {
 }
 .description {
   line-height: 1.4;
-  /* color: var(--grey-100); */
 }
 
-/* CARDS */
-.card-one,
-.card-two,
-.card-three,
-.card-four,
-.card-five {
-  padding: 2rem;
-  border-radius: 0.5rem;
+/* ==================== */
+/* CARDS                */
+/* ==================== */
+.card {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-card);
   box-shadow: 3.4375rem 2.5625rem 3.9375rem 0.25rem rgba(206, 206, 206, 1);
+}
+.card img {
+  border-radius: 50%;
+  max-width: 1.75rem;
+  grid-row: span 2;
+  margin-right: var(--spacing-sm);
+}
+.card-one img {
+  border: var(--border-width) solid var(--purple-300);
+}
+
+.card-five img {
+  border: var(--border-width) solid var(--purple-500);
+}
+
+.top-section {
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 .card-one {
   grid-column: span 2;
-  background-color: var(--purple-500);
   color: var(--white);
+  background: var(--purple-500) url('images/bg-pattern-quotation.svg') no-repeat
+    top right var(--spacing-lg);
 }
 
 .card-two {
@@ -94,6 +139,10 @@ h1 {
   background-color: var(--dark-blue);
   color: var(--white);
 }
+
+/* ==================== */
+/* CARD THEMES          */
+/* ==================== */
 .card-light h1,
 .card-light .name {
   color: var(--grey-500);
@@ -110,4 +159,76 @@ h1 {
 .card-dark .description,
 .card-dark .title {
   color: var(--grey-100);
+}
+
+/* ==================== */
+/* MEDIA QUERIES        */
+/* ==================== */
+@media (max-width: 64rem) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 40.4375rem;
+  }
+
+  .card-one {
+    grid-column: span 2;
+    grid-row: 1;
+    background-position: top right 10rem;
+  }
+
+  .card-two {
+    grid-row: 2;
+    grid-column: 1;
+  }
+
+  .card-four {
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+  .card-five {
+    grid-column: span 2;
+    grid-row: 3;
+  }
+
+  .card-three {
+    grid-column: span 2;
+    grid-row: 4;
+  }
+}
+
+@media (max-width: 30rem) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding-block-start: var(--spacing-lg);
+    padding-block-end: var(--spacing-md);
+    margin: 0;
+  }
+
+  .card {
+    max-width: 19.0625rem;
+    grid-column: 1;
+  }
+
+  .card-one {
+    background-image: none;
+
+    grid-row: 1;
+  }
+  .card-two {
+    grid-row: 2;
+  }
+
+  .card-four {
+    grid-row: 3;
+  }
+
+  .card-five {
+    grid-row: 4;
+  }
+
+  .card-three {
+    grid-row: 5;
+  }
 }
